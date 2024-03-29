@@ -40,11 +40,8 @@ func FindById(c *gin.Context) {
 	fmt.Println("FindById")
 	var users []orm.User
 	orm.Db.Find(&users)
-	// fmt.Println("a:", a)
 	Username := c.Param("username")
 	fmt.Println("Username:", Username)
-	// Username := "surawee4"
-	// Find user by ID
 	fmt.Println("Username:", users)
 	for _, user := range users {
 		if user.Username == Username {
@@ -53,4 +50,20 @@ func FindById(c *gin.Context) {
 		}
 	}
 	c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+}
+
+func DeleteUser(c *gin.Context) {
+	fmt.Println("DeleteUser")
+	var users []orm.User
+	orm.Db.Find(&users)
+	Username := c.Param("username")
+	fmt.Println("Username:", Username)
+
+	for _, user := range users {
+		if user.Username == Username {
+			orm.Db.Delete(&user)
+			c.JSON(http.StatusOK, gin.H{"status": "success", "message": "User deleted successfully"})
+			return
+		}
+	}
 }
