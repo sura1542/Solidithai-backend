@@ -56,30 +56,13 @@ func main() {
 	// initail route
 	router := gin.Default()
 
-	// controllers.ReccomendPost()
 	// use middleware
 	router.Use(CORSMiddleware())
 	// router.Use(orm.Verify)
 
 	routes.UserRoute(router)
-	// routes.QuestRoute(router)
-	// routes.PostRoutes(router)
-	// routes.CommentRoutes(router)
-	// routes.LikeRoutes(router)
-	// routes.BookMarkRoutes(router)
-	// routes.TestRoute(router)
-	// // routes.ReportRoutes(router)
-	// routes.MockingRoute(router)
 
 	// configue on port 3000
 	router.Run("0.0.0.0:8080")
-
-	// r := gin.Default()
-	// r.Use(cors.Default())
-	// r.POST("/register", AuthController.Register)
-	// r.POST("/login", AuthController.Login)
-	// authorized := r.Group("/users", middleware.JWTAuthen())
-	// authorized.GET("/readall", UserController.ReadAll)
-	// r.Run("localhost:3000")
 
 }
