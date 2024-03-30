@@ -16,5 +16,4 @@ func UserRoute(route *gin.Engine) {
 	v1.DELETE("/delete/:username", controllers.DeleteUser)
 	v1.POST("/register", controllers.Register)
 	v1.POST("/login", controllers.Login)
-
 }
